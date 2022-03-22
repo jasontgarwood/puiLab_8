@@ -65,11 +65,28 @@ function onLoad() {
 
   // generate a random animal when the document opens
   let animal = generateRandomAnimal();
-  console.log(animal)
+  
   // update the page based on the animal properties
   document.getElementById("animal-properties").textContent = animal.name + "  " + animal.age + "years old";
   let imageTag = document.getElementById("animal-img");
   imageTag.setAttribute("src", animal.image);
   imageTag.setAttribute("alt", animal.image_alt);
 
+
+  
+
+
+
+
+
+  document.getElementById("saveButton").addEventListener("click", function() {
+    // save the animal to the local storage
+    localStorage.setItem("savedAnimal", JSON.stringify(animal));
+
+    // if this button was clicked, hide button and show message to user
+    document.getElementById("saveButton").style.display = "none";
+    document.getElementById("saveStatus").innerText = "Saved!";
+  })
 }
+
+
